@@ -1,0 +1,18 @@
+section{
+  margin-top: 100px;
+}
+
+.titel h2{
+  color:#188894 ;
+  font-weight: 700;
+}
+.col-md-12 p{
+  color: #414141b9;
+  font-size: 30px;
+  font-weight: 700;
+}
+@media (max-width: 576px) {
+  .col-md-12 .ps-4{
+    font-size: 20px;
+  }
+}

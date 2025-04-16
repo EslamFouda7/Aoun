@@ -1,0 +1,77 @@
+.donation{
+  padding: 50px 0 50px 0;
+  margin-top: 100px;
+  background-color: #1888943a;
+}
+.donation h2{
+  color:#188894 ;
+  font-weight: 700;
+}
+.donation p{
+  color: #414141b9;
+  font-size: 30px;
+  font-weight: 700;
+}
+.titel h2{
+  font-size: 28px;
+}
+@media (max-width: 576px) {
+  .titel h2{
+    font-size: 24px;
+}
+  .col-md-8 .ps-4{
+    font-size: 24px;
+  }
+}
+
+
+.btn {
+  box-shadow: 0 0 10px #188894;
+  border-radius: 50px;
+  width: 150px;
+  font-weight: 500;
+  transition: .5s ease;
+  color: rgb(71, 71, 71);
+}
+
+.btn:hover{
+  background-color: #188894;
+  box-shadow: none;
+  color: white;
+}
+
+.card{
+  height: 450px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: none;
+  box-shadow: 0 0 10px #188894;
+}
+.card h5{
+  font-weight: 700;
+  color: rgb(49, 49, 49);
+}
+.card a{
+  text-decoration: none;
+}
+.card p{
+  font-size:12px ;
+}
+.progress{
+  height: 15px;
+  padding: 0;
+  border-radius: 10px;
+}
+.progress-bar{
+  background-color:#188894;
+  font-size: 10px;
+}
+
+
+swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+}
+

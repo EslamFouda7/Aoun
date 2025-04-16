@@ -1,0 +1,119 @@
+
+.landing {
+  height: 100vh;
+}
+
+.landing .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(4, 74, 82, 0.6);
+  z-index: 0;
+}
+
+.landing .landing-contant{
+  position: absolute;
+  left: 50%;
+  top:50%;
+  transform: translate(-50% , -50%);
+  color: white;
+
+}
+.landing .landing-contant h1{
+  margin: 0;
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 1.8;
+}
+.landing .landing-contant p{
+font-size: 16px;
+line-height: 2;
+color: #d6d6d6;
+}
+.btn {
+  box-shadow: 0 0 10px #00e5ff;
+  border-radius: 50px;
+  width: 150px;
+  font-weight: 500;
+  transition: .5s ease;
+}
+
+.btn:hover{
+
+  background-color: #188894;
+  box-shadow: none;
+}
+
+.Donation{
+  height: 100vh;
+}
+/*about*/
+.about{
+  padding-top:100px;
+}
+.cardscontainer{
+  padding-top:100px;
+}
+.about h2{
+  color:#188894 ;
+  font-weight: 700;
+}
+.paragraph{
+  font-size: 25px;
+  color: #4e4e4e;
+  font-weight: 500;
+}
+.image img{
+  border-radius: 50px;
+  margin-top: 30px;
+}
+.card{
+  background-color: rgb(24, 136, 148,0.4);
+  border: none;
+  border-radius: 30px;
+  margin-bottom: 30px;
+}
+
+.card .icon{
+  font-size: 30px;
+}
+.card .icon h5{
+  color: #188894;
+}
+.card .contant p{
+  color: #3b3b3be0;
+  font-weight: 500;
+}
+
+.foot p{
+  color: #3b3b3b;
+  font-weight: 500;
+}
+.btn {
+  box-shadow: 0 0 10px #188894;
+  border-radius: 50px;
+  width: 150px;
+  font-weight: 500;
+  transition: .5s ease;
+  color: rgb(71, 71, 71);
+}
+
+.btn:hover{
+  background-color: #188894;
+  box-shadow: none;
+  color: white;
+}
+
+
+@media (max-width: 767px) {
+  .landing .landing-contant h1{
+    font-size: 24px;
+  }
+}
+@media (max-width: 991px){
+  .paragraph{
+    font-size: 20px;
+  }
+}

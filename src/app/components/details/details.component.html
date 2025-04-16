@@ -1,0 +1,89 @@
+<app-header></app-header>
+<app-loading-spinner *ngIf="loading"></app-loading-spinner>
+<section *ngIf="item && !loading">
+  <div class="container">
+    <div class="row overflow-hidden">
+      <div class="col-md-6">
+        <h3 data-aos="slide-right" data-aos-duration="1000" data-aos-once="true">{{ item.title}}</h3>
+        <div class="row mt-3">
+          <p data-aos="slide-right" data-aos-duration="1000" data-aos-once="true" data-aos-delay="500">{{item.description}}</p>
+        </div>
+        <div class="row">
+          <p data-aos="slide-right" data-aos-duration="1000" data-aos-once="true" data-aos-delay="1000"><strong>Total Amount:</strong> {{ item.required_amount }}</p>
+        </div>
+        <div class="row">
+          <p data-aos="slide-right" data-aos-duration="1000" data-aos-once="true" data-aos-delay="1500"><strong>Donated Amount:</strong> {{ colected}}</p>
+        </div>
+        <div class="row">
+          <p data-aos="slide-right" data-aos-duration="1000" data-aos-once="true" data-aos-delay="2000"><strong>Remaining:</strong> {{remaining(item.required_amount,colected)}}</p>
+        </div>
+      </div>
+      <div class="col-md-6 d-flex justify-content-center" data-aos="slide-left" data-aos-duration="1000" data-aos-once="true" data-aos-delay="2000">
+        <img [src]=" imgurl + item.file_path" alt="Item Image" width="450px" height="300px">
+      </div>
+    </div>
+    <!--progress-->
+    <div class="row mt-5">
+      <div class="col-11 mx-auto">
+        <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="75" aria-valuemin="0"
+          aria-valuemax="100">
+          <div class="progress-bar" data-aos="slide-right" data-aos-duration="2000" data-aos-once="true" data-aos-delay="300" [style.width]="donatePercentage(item.required_amount,colected)+'%'">
+            {{ donatePercentage(item.required_amount,colected) }}%
+          </div>
+        </div>
+        <div class="row mb-4 underprogress">
+          <div class="col-6 col-md-6">
+            <p>Donate {{colected}}</p>
+          </div>
+          <div class="col-6 col-md-6">
+            <p>Remaining {{remaining(item.required_amount,colected)}}</p>
+          </div>
+        </div>
+        <div class="d-flex justify-content-center mb-5 " *ngIf="UserType ==='donor'|| item?.foundation_id != UserId">
+          <a class="btn btncard donate" (click)="showDonationSteps(item)">Donate Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container mb-5" *ngIf="item?.foundation_id === UserId && UserType ==='foundation'">
+    <div class="row">
+      <button type="submit" class="btn text-white edit" data-bs-toggle="modal"
+        data-bs-target="#editModal">Edit</button>
+    </div>
+  </div>
+
+
+  <!-- Bootstrap Modal -->
+  <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <i class="fa-solid fa-xmark close-icon" data-bs-dismiss="modal" style="cursor: pointer; position: absolute; top: 15px; right: 20px; font-size: 24px;"></i>
+        <form #form="ngForm" class="">
+          <div class="row text-center">
+              <h2>Edit Your Request</h2>
+          </div>
+          <div class="row">
+            <div class="col-md-12 contain">
+              <label for="Title" class="labe">Title</label>
+              <input type="text" class="form-control" name="Title" id="Title" required placeholder=" " [(ngModel)]="item.title" >
+            </div>
+          </div>
+          <div class="row contain">
+            <label for="Description " class="labeldes">Description</label>
+            <textarea name="Description" class="form-control" id="Description" required [(ngModel)]="item.description"></textarea>
+          </div>
+          <div class="row">
+            <div class="col-md-12 contain">
+            <label for="amount" class="labe">Required Amount With $</label>
+              <input type="number" class="form-control" id="required_amount" name="required_amount" placeholder="" min="1" required [(ngModel)]="item.required_amount" >
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <a class="btn save mt-4" (click)="Save()">Save</a>
+          </div>
+          </form>
+      </div>
+    </div>
+  </div>
+</section>
+<app-footer></app-footer>

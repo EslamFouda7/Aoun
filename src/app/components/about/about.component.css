@@ -1,0 +1,91 @@
+.about{
+  padding-top:100px;
+  margin-bottom: 100px;
+}
+.cardscontainer{
+  padding-top:100px;
+}
+.about h2{
+  color:#188894 ;
+  font-weight: 700;
+}
+.paragraph{
+  font-size: 25px;
+  color: #4e4e4e;
+  font-weight: 500;
+}
+.image img{
+  border-radius: 50px;
+  margin-top: 30px;
+}
+.card{
+  background-color: rgb(24, 136, 148,0.4);
+  border: none;
+  border-radius: 30px;
+  margin-bottom: 30px;
+}
+
+.card .icon{
+  font-size: 30px;
+}
+.card .icon h5{
+  color: #188894;
+}
+.card .contant p{
+  color: #3b3b3be0;
+  font-weight: 500;
+}
+.foot{
+  margin-bottom: 100px;
+}
+.foot p{
+  color: #3b3b3b;
+  font-weight: 500;
+}
+.btn {
+  box-shadow: 0 0 10px #188894;
+  border-radius: 50px;
+  width: 150px;
+  font-weight: 500;
+  transition: .5s ease;
+  color: rgb(71, 71, 71);
+}
+
+.btn:hover{
+  background-color: #188894;
+  box-shadow: none;
+  color: white;
+}
+@media (max-width: 991px){
+  .paragraph{
+    font-size: 20px;
+  }
+}
+
+.DevelopmentTeam{
+  padding: 40px;
+  background-color: #1888943a;
+}
+.cardsTeam{
+  color: #006e7a;
+}
+.cardsTeam a i{
+  text-decoration: none;
+  color: #006e7a;
+  border-radius: 50px;
+  width: 50px;
+  padding: 10px;
+  box-shadow: 0 0 10px #188894;
+  transition: 0.3s ease-in-out;
+}
+.cardsTeam a i:hover{
+  font-size: 14px;
+  box-shadow: none;
+}
+.cardsTeam img {
+  transition: filter 0.3s ease-in-out;
+}
+
+.cardsTeam:hover img {
+  filter: brightness(1.3);
+}

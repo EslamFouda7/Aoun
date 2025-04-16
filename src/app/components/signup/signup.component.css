@@ -1,0 +1,108 @@
+.signup{
+  height: 120vh;
+}
+.signup .overlay{
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 120vh;
+  background: rgba(4, 74, 82, 0.5);
+}
+.signup .container{
+  background-color: rgb(24, 136, 148,0.5);
+  width: 500px;
+  border-radius: 30px;
+}
+
+
+.pra p{
+  color: #e2e2e2;
+}
+.row input{
+  border: none;
+  outline: none;
+  border-radius: 50px;
+  width: 80%;
+  color: #535353;
+  padding-left: 20px;
+}
+.row select{
+  border: none;
+  outline: none;
+  border-radius: 50px;
+  width: 80%;
+  height: 26px;
+  color: #535353;
+  padding-left: 36px;
+  font-size: 10px;
+}
+
+.contain{
+  position: relative;
+  margin-bottom: 5px;
+}
+.row label{
+  color: #a0a0a0;
+  position: absolute;
+  left: 20%;
+  top: 15%;
+  font-size: 12px;
+}
+.row input:focus + label ,
+.row input:not(:placeholder-shown) + label{
+  opacity: 0;
+}
+.titelin p{
+  margin-bottom: 5px;
+}
+
+
+/*btns*/
+.btn{
+  color: white;
+  border-radius: 0;
+  border: none;
+}
+.bt1{
+  border-radius: 10px 0 0 10px;
+  width: 90%;
+}
+.bt1.active{
+  background-color:#77DD77;
+}
+.bt2.active{
+  background-color:#77DD77;
+}
+.bt2{
+  border-radius: 0 10px 10px 0;
+  width: 90%;
+}
+.col-md-6{
+  padding: 0;
+}
+.btn:hover{
+  background-color:#77DD77 ;
+}
+.bt3{
+  border-radius: 50px;
+  background-color: #77dd77d8;
+  width: 75%;
+}
+/*End btns*/
+
+
+/*footer form*/
+.signin{
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+@media (max-width: 576px) {
+  .container {
+    max-width: 90%;
+  }
+  .row select{
+    padding-left: 18px;
+  }
+}

@@ -1,0 +1,87 @@
+<section class="pb-5">
+  <!-- Spinner أثناء التحميل -->
+  <div *ngIf="loading" class="d-flex justify-content-center align-items-center "
+    style="height: 300px; color: #188894 ;">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+  <div *ngIf="!loading">
+    <h2>Profile Settings</h2>
+    <div class="container p-5">
+      <!-- بيانات المتبرع -->
+      <form *ngIf="userType === 'donor' && person">
+        <div class="row mb-5">
+          <h5>Donor Information:</h5>
+        </div>
+        <div class="row mb-4">
+          <input type="text" id="name" name="full_name" [(ngModel)]="person.full_name">
+          <label for="name">Full Name</label>
+        </div>
+        <div class="row mb-4">
+          <input type="text" id="email" name="email" [(ngModel)]="person.email">
+          <label for="email">Email</label>
+        </div>
+        <div class="row mb-4">
+          <input type="text" id="phone" name="phone" [(ngModel)]="person.phone">
+          <label for="phone">Phone</label>
+        </div>
+        <div class="row mb-5">
+          <h5>Preferences:</h5>
+        </div>
+        <div class="row mb-4">
+          <input type="text" id="PreferredDonation" name="preferred_donation" [(ngModel)]="person.preferred_donation">
+          <label for="PreferredDonation">Preferred Donation</label>
+        </div>
+        <div class="row mb-4">
+          <input type="text" id="Location" name="location" [(ngModel)]="person.location">
+          <label for="Location">Location</label>
+        </div>
+        <div class="row d-flex justify-content-end">
+          <button type="submit" class="btn  save text-white" (click)="savechange()">Save Changes</button>
+        </div>
+      </form>
+
+      <!-- بيانات المؤسسة -->
+      <form *ngIf="userType === 'foundation' && foundation && !loading">
+        <div class="row mb-5">
+          <h5>Foundation Information:</h5>
+        </div>
+        <div class="row mb-4">
+          <input type="text" id="foundationName" name="foundation_name" [(ngModel)]="foundation.foundation_name">
+          <label for="foundationName">Foundation Name</label>
+        </div>
+        <div class="row mb-4">
+          <input type="text" id="typeOfFoundation" name="type_of_foundation"
+            [(ngModel)]="foundation.type_of_foundation">
+          <label for="typeOfFoundation">Type of Foundation</label>
+        </div>
+        <div class="row mb-4">
+          <input type="text" id="email" name="email" [(ngModel)]="foundation.email">
+          <label for="email">Email</label>
+        </div>
+        <div class="row mb-4">
+          <input type="text" id="phone" name="phone" [(ngModel)]="foundation.phone">
+          <label for="phone">Phone</label>
+        </div>
+        <div class="row mb-5">
+          <h5>Donation Details:</h5>
+        </div>
+        <div class="row mb-4">
+          <input type="text" id="RequiredDonation" name="required_donation" [(ngModel)]="foundation.required_donation">
+          <label for="RequiredDonation">Required Donation</label>
+        </div>
+        <div class="row mb-4">
+          <input type="text" id="Location" name="location" [(ngModel)]="foundation.location">
+          <label for="Location">Location</label>
+        </div>
+        <div class="row d-flex justify-content-end">
+          <button type="submit" class="btn save text-white" (click)="savechange()">Save Changes</button>
+        </div>
+      </form>
+    </div>
+    <button (click)="logout()" class="btn btn-danger mt-5">Logout</button>
+  </div>
+
+
+</section>

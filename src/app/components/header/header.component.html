@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg ">
+  <div class="container body-nav">
+    <a class="navbar-brand" href="#">
+      <img src="/image-(1).png" width="50px"  alt="Logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/home"
+            (click)="scrollToSection('landing')">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0)" (click)="scrollToSection('about')">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0)" (click)="scrollToSection('donation')">Donation Campaigns</a>
+        </li>
+      </ul>
+      <!--btn-->
+      <ul class="navbar-nav mb-2 ms-auto mb-lg-0">
+        <li class="nav-item me-4" *ngIf="UserType==='foundation' || UserType === null ">
+          <a routerLink="/RequestAssistance" class="btn Request text-white">Request Assistance</a>
+        </li>
+        <li class="nav-item me-4">
+          <a routerLink="/allcards" class="btn Donate text-white" *ngIf="UserType==='donor' || UserType === null ">Donate Now</a>
+        </li>
+        <li class="nav-item mt-2 me-2">
+          <a routerLink="/profile"><i class="fa-regular fa-user text-white"></i></a>
+        </li>
+
+      </ul>
+      <!--End btn-->
+    </div>
+  </div>
+</nav>

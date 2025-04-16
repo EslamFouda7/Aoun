@@ -1,1 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'swiper/css';
+@import 'swiper/css/pagination';
+
+.swal2-timer-progress-bar {
+  background-color: white !important;
+}
+.custom-confirm-btn{
+  background-color: #188894 ;
+  border: none;
+  border-radius: 50px;
+  width: 90px;
+  outline: none;
+}
+.custom-cancel-btn{
+  border: none;
+  border-radius: 50px;
+  width: 90px;
+  outline: none;
+}
+.selectswal{
+  border: none;
+  outline:none;
+  width: 200px;
+  border-radius: 18px;
+}
+@media (max-width: 760px) {
+  .visacards{
+    margin-top: 15px;
+}
+}
+

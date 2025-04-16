@@ -1,0 +1,53 @@
+h2{
+  font-weight: bold;
+  color: #555555;
+  margin: 40px 0 40px 0;
+
+}
+.container{
+  border:  1px solid #CBCBCB;
+  border-radius: 18px;
+}
+.container h5{
+  color:#5E5E5E ;
+  padding: 0;
+  font-weight: 700;
+}
+.container input{
+  border: none;
+  border-bottom: 1px solid #CBCBCB;
+  outline: none;
+  width: 80%;
+  color: #5E5E5E;
+  font-weight: 600;
+}
+.container label{
+  position: relative;
+  bottom: 45px;
+  left: 20px ;
+  color: #CBCBCB;
+  font-weight: 600;
+}
+.save{
+  background-color: #C39642 !important;
+}
+.btn{
+
+  width: 150px;
+  border-radius: 50px;
+  font-weight: 500;
+  box-shadow: 0 0 10px #C39642;
+  transition: .5s ease;
+}
+.btn:hover{
+  box-shadow: none;
+}
+@media (max-width: 576px) {
+  .container label{
+    font-size: 12px;
+  }
+}
+
+
+
+

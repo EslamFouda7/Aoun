@@ -1,0 +1,59 @@
+<app-header></app-header>
+<app-loading-spinner *ngIf="loading"></app-loading-spinner>
+<section class="Request">
+  <img src="header2.webp" alt="Landing Background" style="width: 100%; height: 120vh; object-fit: cover;">
+  <div class="overlay d-flex justify-content-center align-items-center">
+    <div class="container p-4">
+      <div class="row text-center">
+        <h3 class="text-white mb-4">Request Assistance</h3>
+      </div>
+      <form #form="ngForm" class="" (ngSubmit)="onSubmit(form)">
+        <div class="row">
+          <div class="col-md-12 contain">
+            <input type="text" class="form-control" name="FoundationName" id="FoundationName" required placeholder=" " [(ngModel)]="request.foundation_name">
+            <label for="FoundationName" class="labe">Foundation Name</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 contain">
+            <input type="text" class="form-control" name="Location" id="Location" required placeholder=" " [(ngModel)]="request.location">
+            <label for="Location" class="labe">Location</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 contain">
+            <input type="text" class="form-control" name="Title" id="Title" required placeholder=" " [(ngModel)]="request.title">
+            <label for="Title" class="labe">Title</label>
+          </div>
+        </div>
+        <div class="row contain">
+          <textarea name="Description" class="form-control" id="Description" required [(ngModel)]="request.description"></textarea>
+          <label for="Description" class="labeldes">Description</label>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-auto">
+            <label for="fileInput" class="text-white btn">
+              <i class="fa-solid fa-cloud-arrow-up"></i>
+            </label>
+          </div>
+          <input type="file" class="btn" id="fileInput" hidden name="file" (change)="onFileSelected($event)">
+        </div>
+        <div class="row justify-content-center text-white mb-3">
+          <div class="col-auto">
+            <label for="fileInput">Upload file</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 contain">
+            <input type="number" class="form-control" id="required_amount" name="required_amount" placeholder="" min="1" required [(ngModel)]="request.required_amount">
+            <label for="required_amount" class="labe">Required Amount With $</label>
+          </div>
+        </div>
+        <div class="row  justify-content-center">
+          <button class="btn bt1">Send</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+<app-footer></app-footer>

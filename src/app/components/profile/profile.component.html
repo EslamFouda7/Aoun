@@ -1,0 +1,32 @@
+<app-header></app-header>
+<section class="profile">
+  <img src="header.webp" alt="Landing Background" style="width: 100%; object-fit: cover;">
+  <div class="overlay">
+    <div class="container landing-contant">
+      <div class="row" data-aos="zoom-in" data-aos-duration="1500" data-aos-once="true" data-aos-delay="500">
+        <h1>Welcome {{userName}}</h1>
+      </div>
+      <div class="row mt-5 d-flex justify-content-between">
+
+        <div class="col-md-4 col-4 text-center" *ngIf="userType === 'foundation'">
+          <a routerLink="/profile/EditDonationRequests" routerLinkActive="active">Your Donation Requests</a>
+        </div>
+        <div class="col-md-4 col-4 text-center" *ngIf="userType === 'donor'" >
+          <a routerLink="/profile/recommended" routerLinkActive="active">Recommended Donations</a>
+        </div>
+        <div class="col-md-4 col-4 text-center">
+          <a routerLink="/profile/settings" routerLinkActive="active">Account Information</a>
+        </div>
+        <div class="col-md-4 col-4 text-center">
+          <a routerLink="/profile/password" routerLinkActive="active">Change Password</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</section>
+<app-footer></app-footer>
