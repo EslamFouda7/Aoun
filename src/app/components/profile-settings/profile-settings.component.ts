@@ -16,6 +16,40 @@ import { AuthService } from '../../services/auth-service.service';
   styleUrl: './profile-settings.component.css',
 })
 export class ProfileSettingsComponent implements OnInit {
+
+
+  //محافظات
+egyptGovernorates: string[] = [
+  'Cairo',
+  'Giza',
+  'Alexandria',
+  'Sharqia',
+  'Dakahlia',
+  'Beheira',
+  'Monufia',
+  'Qalyubia',
+  'Gharbia',
+  'Kafr El Sheikh',
+  'Fayoum',
+  'Beni Suef',
+  'Minya',
+  'Assiut',
+  'Sohag',
+  'Qena',
+  'Luxor',
+  'Aswan',
+  'Red Sea',
+  'New Valley',
+  'Matrouh',
+  'North Sinai',
+  'South Sinai',
+  'Damietta',
+  'Ismailia',
+  'Port Said',
+  'Suez'
+];
+
+
   person: Donor = {
     id: 0,
     full_name: '',

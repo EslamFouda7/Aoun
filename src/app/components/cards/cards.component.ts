@@ -60,7 +60,5 @@ export class CardsComponent {
     });
   }
 
-  showDonationSteps(item: any) {
-    this._alert.showDonationSteps(item);
-  }
+
 }

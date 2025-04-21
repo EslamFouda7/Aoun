@@ -32,7 +32,6 @@ h2{
   background-color: #C39642 !important;
 }
 .btn{
-
   width: 150px;
   border-radius: 50px;
   font-weight: 500;
@@ -47,6 +46,19 @@ h2{
     font-size: 12px;
   }
 }
+
+select{
+  border: none;
+  border-bottom:1px solid #CBCBCB;
+  outline: none;
+  width: 80%;
+  color: #5E5E5E;
+  font-weight: 600;
+}
+.form-control:focus{
+  box-shadow: none;
+}
+
 
 
 

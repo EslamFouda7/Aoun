@@ -15,26 +15,31 @@
           <h5>Donor Information:</h5>
         </div>
         <div class="row mb-4">
-          <input type="text" id="name" name="full_name" [(ngModel)]="person.full_name">
+          <input class="form-control" type="text" id="name" name="full_name" [(ngModel)]="person.full_name">
           <label for="name">Full Name</label>
         </div>
         <div class="row mb-4">
-          <input type="text" id="email" name="email" [(ngModel)]="person.email">
+          <input class="form-control" type="text" id="email" name="email" [(ngModel)]="person.email">
           <label for="email">Email</label>
         </div>
         <div class="row mb-4">
-          <input type="text" id="phone" name="phone" [(ngModel)]="person.phone">
+          <input class="form-control" type="text" id="phone" name="phone" [(ngModel)]="person.phone">
           <label for="phone">Phone</label>
         </div>
         <div class="row mb-5">
           <h5>Preferences:</h5>
         </div>
         <div class="row mb-4">
-          <input type="text" id="PreferredDonation" name="preferred_donation" [(ngModel)]="person.preferred_donation">
+          <select class="form-control" name="preferred_donation" id="PreferredDonation" required [(ngModel)]="person.preferred_donation">
+            <option value="money">Money</option>
+            <option value="medical equipment">Medical Equipment</option>
+          </select>
           <label for="PreferredDonation">Preferred Donation</label>
         </div>
         <div class="row mb-4">
-          <input type="text" id="Location" name="location" [(ngModel)]="person.location">
+          <select class="form-control" name="location" id="Location" [(ngModel)]="person.location">
+            <option  *ngFor="let gov of egyptGovernorates" [value]="gov">{{gov}}</option>
+          </select>
           <label for="Location">Location</label>
         </div>
         <div class="row d-flex justify-content-end">
@@ -68,11 +73,16 @@
           <h5>Donation Details:</h5>
         </div>
         <div class="row mb-4">
-          <input type="text" id="RequiredDonation" name="required_donation" [(ngModel)]="foundation.required_donation">
+          <select class="form-control" name="required_donation" id="RequiredDonation" required [(ngModel)]="foundation.required_donation">
+            <option value="money">Money</option>
+            <option value="medical equipment">Medical Equipment</option>
+          </select>
           <label for="RequiredDonation">Required Donation</label>
         </div>
         <div class="row mb-4">
-          <input type="text" id="Location" name="location" [(ngModel)]="foundation.location">
+          <select class="form-control" name="location" id="Location" [(ngModel)]="foundation.location">
+            <option  *ngFor="let gov of egyptGovernorates" [value]="gov">{{gov}}</option>
+          </select>
           <label for="Location">Location</label>
         </div>
         <div class="row d-flex justify-content-end">
