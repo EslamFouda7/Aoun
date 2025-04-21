@@ -9,11 +9,44 @@ import { AlertService } from '../../services/alert.service';
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [CommonModule, RouterLink, FooterComponent, FormsModule],
+  imports: [CommonModule, RouterLink, FooterComponent, FormsModule,CommonModule],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css',
 })
 export class SignupComponent {
+//محافظات
+egyptGovernorates: string[] = [
+  'Cairo',
+  'Giza',
+  'Alexandria',
+  'Sharqia',
+  'Dakahlia',
+  'Beheira',
+  'Monufia',
+  'Qalyubia',
+  'Gharbia',
+  'Kafr El Sheikh',
+  'Fayoum',
+  'Beni Suef',
+  'Minya',
+  'Assiut',
+  'Sohag',
+  'Qena',
+  'Luxor',
+  'Aswan',
+  'Red Sea',
+  'New Valley',
+  'Matrouh',
+  'North Sinai',
+  'South Sinai',
+  'Damietta',
+  'Ismailia',
+  'Port Said',
+  'Suez'
+];
+
+
+
   isDonor: boolean = true;
   donorData = {
     full_name: '',
@@ -34,6 +67,8 @@ export class SignupComponent {
   };
   conPasswordDonor: string = '';
   conPasswordFoundation: string = '';
+
+
   constructor(private _api: APIService,
               private _alert: AlertService,
               private router:Router) {}

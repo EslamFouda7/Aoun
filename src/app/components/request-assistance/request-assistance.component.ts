@@ -34,6 +34,7 @@ export class RequestAssistanceComponent {
   request: any = {
     foundation_name: '',
     location: '',
+    reqiured_donation:'',
     title: '',
     description: '',
     required_amount: '',
@@ -71,9 +72,11 @@ export class RequestAssistanceComponent {
     const formData = new FormData();
     formData.append('foundation_name', this.request.foundation_name);
     formData.append('location', this.request.location);
+    formData.append('reqiured_donation', this.request.reqiured_donation);
     formData.append('title', this.request.title);
     formData.append('description', this.request.description);
     formData.append('required_amount', this.request.required_amount);
+    console.log(this.request.required_donation)
     if (this.request.file) {
       formData.append('file', this.request.file);
     }
@@ -102,6 +105,10 @@ export class RequestAssistanceComponent {
           if (err.error.errors.title) {
             this._alert.showAlert(`${err.error.errors.title}`, 'warning');
           }
+          if (err.error.errors.reqiured_donation) {
+            this._alert.showAlert(`${err.error.errors.reqiured_donation}`, 'warning');
+          }
+
         }
       },
     });

@@ -15,6 +15,17 @@ section{
   width: 80%;
   border-radius: 30px;
 }
+select {
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  width: 90%;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #fff;
+}
+
+
 input {
   border: none;
   outline: none;

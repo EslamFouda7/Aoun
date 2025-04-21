@@ -8,12 +8,13 @@ import { SignupComponent } from "./components/signup/signup.component";
 import { LoadingSpinnerComponent } from "./components/loading-spinner/loading-spinner.component";
 import { CommonModule } from '@angular/common';
 import * as AOS from "aos";
+import { DonationModalComponent } from "./components/donation-modal/donation-modal.component";
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterModule, LoadingSpinnerComponent,CommonModule],
+  imports: [RouterOutlet, RouterModule, LoadingSpinnerComponent, CommonModule, DonationModalComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

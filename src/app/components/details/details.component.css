@@ -2,15 +2,32 @@ section{
   margin-top: 100px;
 }
 .col-md-6 img{
+  width: 100%;
   border-radius: 18px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7); /* إضافة ظل خفيف */
 }
+span{
+  font-weight: bold;
+}
+.total-amount{
+  color: #007B3D
+
+}
+.donated-amount{
+  color: #188894;
+
+}
+.remaining{
+  color: #C39642;
+
+}
+
 @media (max-width: 576px) {
   .col-md-6 img{
-    width: 350px;
+    width: 90%;
     height: 250px;
   }
 }
-
 .progress{
   height: 15px;
   padding: 0;
@@ -63,5 +80,6 @@ section{
   color: white;
   padding: 50px;
 }
+
 
 

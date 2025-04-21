@@ -73,7 +73,7 @@
               <select name="preferred_donation" id="PreferredDonation" [(ngModel)]="donorData.preferred_donation">
                 <option value="" selected disabled>Preferred Donation</option>
                 <option value="money">Money</option>
-                <option value="device">Device</option>
+                <option value="medical equipment">Medical Equipment</option>
               </select>
             </div>
           </div>
@@ -81,8 +81,7 @@
             <div class="contain col-md-12 text-center">
               <select name="location" id="Location" [(ngModel)]="donorData.location">
                 <option value="" selected disabled>Location</option>
-                <option value="Cairo">Cairo</option>
-                <option value="Alx">Alx</option>
+                <option  *ngFor="let gov of egyptGovernorates" [value]="gov">{{gov}}</option>
               </select>
             </div>
           </div>
@@ -145,7 +144,7 @@
               <select name="required_donation" id="RequiredDonation" [(ngModel)]="foundationData.required_donation">
                 <option value="" selected disabled>Required Donation</option>
                 <option value="money">Money</option>
-                <option value="device">Device</option>
+                <option value="medical equipment">Medical Equipment</option>
               </select>
             </div>
           </div>
@@ -153,8 +152,7 @@
             <div class="contain col-md-12 text-center">
               <select name="location" id="Location" [(ngModel)]="foundationData.location">
                 <option value="" selected disabled>Location</option>
-                <option value="Cairo">Cairo</option>
-                <option value="Alx">Alx</option>
+                <option  *ngFor="let gov of egyptGovernorates" [value]="gov">{{gov}}</option>
               </select>
             </div>
           </div>

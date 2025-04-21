@@ -11,6 +11,7 @@ import { LoadingSpinnerComponent } from '../loading-spinner/loading-spinner.comp
 import { AuthService } from '../../services/auth-service.service';
 import { FormsModule, NgForm } from '@angular/forms';
 import { environment } from '../../../environments/environment.development';
+import { DonationModalComponent } from "../donation-modal/donation-modal.component";
 
 @Component({
   selector: 'app-details',
@@ -21,20 +22,42 @@ import { environment } from '../../../environments/environment.development';
     HeaderComponent,
     FooterComponent,
     LoadingSpinnerComponent,
-  ],
+    DonationModalComponent
+],
   templateUrl: './details.component.html',
   styleUrl: './details.component.css',
 })
 export class DetailsComponent implements OnInit {
+  selectedItem: any;
+  isModalVisible: boolean = false;
+
+  openModal(item: any) {
+    this.selectedItem = item;
+    this.isModalVisible = true;
+  }
+
+  closeModal() {
+    this.isModalVisible = false;
+  }
+
+
+
+
+
   imgurl=environment.imgurl;
   item: DonationRequest | null = null;
   UserId: number | null = null;
   UserType:string |null =null;
   loading: boolean = true;
-  DonatePercentage: any | null = null;
-  colected: number = 40000;
+  total_donated:number | null =null;
+  remaining_amount:number | null =null;
+  percentage_completed:number|null =null;
+
+
+
+
+
   constructor(
-    private card_details: CardDetailsService,
     private route: ActivatedRoute,
     private _alert: AlertService,
     private _api: APIService,
@@ -42,15 +65,7 @@ export class DetailsComponent implements OnInit {
   ) {}
 
 
-  remaining(total: number, donate: number) {
-    return this.card_details.remaining(total, donate);
-  }
-  donatePercentage(total: number, donate: number) {
-    return this.card_details.donatePercentage(total, donate);
-  }
-  showDonationSteps(item: any) {
-    this._alert.showDonationSteps(item);
-  }
+
 
 
 
@@ -64,7 +79,7 @@ export class DetailsComponent implements OnInit {
     this._api.GetDonationRequestById(itemId).subscribe({
       next: (res: any) => {
         console.log(res);
-        this.item = res.data;
+        this.item = res;
         this.loading = false;
       },
       error: (err) => {
@@ -72,7 +87,21 @@ export class DetailsComponent implements OnInit {
         this.loading = false;
       },
     });
+
+    //بجيب تفاصيل مبالغ التبرع
+    this._api.GetRequestStats(itemId).subscribe({
+      next:(res:any)=>{
+        console.log(res);
+        this.total_donated=res.data.total_donated;
+        this.remaining_amount=res.data.remaining_amount;
+        this.percentage_completed=res.data.percentage_completed;
+      },
+      error:(err)=>{
+        console.log(err)
+      }
+    })
   }
+
 
   Save() {
     const itemId = Number(this.route.snapshot.paramMap.get('id'));

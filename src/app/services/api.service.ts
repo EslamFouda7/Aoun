@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment.development';
-import { Observable } from 'rxjs';
+import { Observable, retry } from 'rxjs';
 import { Donor } from '../models/Donor.model';
 import { Foundation } from '../models/Foundation.model';
 import { DonationRequest } from '../models/DonationRequest.model';
@@ -32,9 +32,15 @@ export class APIService {
     return this.httpclient.get(`${environment.baseUrl}/api/donation-requests/${id}`);
   }
 
+  //بيجيب الطلبات الخاصه بالموسسه
   GetRequestsByFoundationId(foundationId:number){
     return this.httpclient.get(`${environment.baseUrl}/api/foundations/${foundationId}/donation-requests`);
   }
+  //بيجيب التفاصيل الخاصه بالتبرع
+  GetRequestStats(requestId:number){
+    return this.httpclient.get(`${environment.baseUrl}/api/donations/request/${requestId}/stats`)
+  }
+
 
 
 
@@ -70,8 +76,18 @@ DonationRequests(data:any){
 UpdateDonationRequests(id:number,data:any){
   return this.httpclient.put(`${environment.baseUrl}/api/donation-requests/${id}` ,data)
 }
+//التبرع
+StoreDonations(data:any){
+  return this.httpclient.post(`${environment.baseUrl}/api/donations`,data)
 }
 
+
+//AI model
+AiRecommendation(donorId:number){
+  return this.httpclient.get(`${environment.baseUrl}/api/ai/recommend/${donorId}`)
+}
+
+}
 
 
 

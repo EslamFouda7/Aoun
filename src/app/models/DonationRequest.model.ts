@@ -5,9 +5,15 @@ export interface DonationRequest {
   id:number;
   required_amount:number;
   location:string;
+  reqiured_donation:string;
   title:string;
   description:string;
   file_path:string;
-  foundation: Foundation;    
+  stats: {
+    total_donated: number;
+    remaining_amount: number;
+    percentage_completed: number;
+  };
+  foundation: Foundation;
 }
 

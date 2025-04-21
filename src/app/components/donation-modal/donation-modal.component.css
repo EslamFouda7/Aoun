@@ -1,0 +1,19 @@
+.modal {
+  display: block;
+}
+
+.modal-content {
+  background: rgba(4, 74, 82, .9);
+  border-radius: 10px;
+  color: white;
+}
+
+.close-icon:hover {
+  color: red;
+}
+
+.modal-head {
+  border-bottom: 1px solid #dee2e6;
+  border-top: 0;
+  opacity: 1;
+}

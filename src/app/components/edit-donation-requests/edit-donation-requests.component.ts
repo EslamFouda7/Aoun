@@ -8,18 +8,18 @@ import { RouterLink } from '@angular/router';
 import { CardDetailsService } from '../../services/card-details.service';
 import { AlertService } from '../../services/alert.service';
 import { environment } from '../../../environments/environment.development';
+import { DonationModalComponent } from "../donation-modal/donation-modal.component";
 
 @Component({
   selector: 'app-edit-donation-requests',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, DonationModalComponent],
   templateUrl: './edit-donation-requests.component.html',
   styleUrl: './edit-donation-requests.component.css',
 })
 export class EditDonationRequestsComponent {
   imgurl=environment.imgurl;
   items: DonationRequest[] = [];
-  colected: number = 40000;
   userId: number | null = null;
   loading: boolean = true;
   constructor(
@@ -30,12 +30,13 @@ export class EditDonationRequestsComponent {
   ) {}
 
   ngOnInit(): void {
+
     this.userId = this._Auth.getUserId();
     if (this.userId) {
       this._api.GetRequestsByFoundationId(this.userId).subscribe({
         next: (res: any) => {
           console.log('res', res);
-          this.items = res;
+          this.items = res.data;
           this.loading=false;
         },
         error: (err) => {
@@ -46,13 +47,16 @@ export class EditDonationRequestsComponent {
     }
   }
 
-  remaining(total: number, donate: number) {
-    return this.card_details.remaining(total, donate);
+  selectedItem: any;
+  isModalVisible: boolean = false;
+
+  openModal(item: any) {
+    this.selectedItem = item;
+    this.isModalVisible = true;
   }
-  donatePercentage(total: number, donate: number) {
-    return this.card_details.donatePercentage(total, donate);
+
+  closeModal() {
+    this.isModalVisible = false;
   }
-  showDonationSteps(item: any) {
-    return this._alert.showDonationSteps(item);
-  }
+
 }

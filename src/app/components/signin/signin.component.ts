@@ -43,7 +43,7 @@ export class SigninComponent {
           this._alert.showAlert(`${err.error.errors.email}`,'error')
         }
         if (err.status === 401 && err.error.error) {
-          this._alert.showAlert('User not found. Please check your email.', 'error');
+          this._alert.showAlert('User not found. Please check your email or password.', 'error');
         }
        console.log('Signin failed!',err)
       }

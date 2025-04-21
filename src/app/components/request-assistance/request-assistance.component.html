@@ -10,24 +10,38 @@
       <form #form="ngForm" class="" (ngSubmit)="onSubmit(form)">
         <div class="row">
           <div class="col-md-12 contain">
-            <input type="text" class="form-control" name="FoundationName" id="FoundationName" required placeholder=" " [(ngModel)]="request.foundation_name">
+            <input type="text" class="form-control" name="FoundationName" id="FoundationName" required placeholder=" "
+              [(ngModel)]="request.foundation_name">
             <label for="FoundationName" class="labe">Foundation Name</label>
           </div>
         </div>
         <div class="row">
           <div class="col-md-12 contain">
-            <input type="text" class="form-control" name="Location" id="Location" required placeholder=" " [(ngModel)]="request.location">
+            <input type="text" class="form-control" name="Location" id="Location" required placeholder=" "
+              [(ngModel)]="request.location">
             <label for="Location" class="labe">Location</label>
           </div>
         </div>
         <div class="row">
           <div class="col-md-12 contain">
-            <input type="text" class="form-control" name="Title" id="Title" required placeholder=" " [(ngModel)]="request.title">
+            <select class="form-control" name="reqiured_donation" id="RequiredDonation" required [(ngModel)]="request.reqiured_donation">
+              <option value="" disabled selected hidden></option>
+              <option value="money">Money</option>
+              <option value="medical equipment">Medical Equipment</option>
+            </select>
+            <label for="RequiredDonation" class="labe">Required Donation</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 contain">
+            <input type="text" class="form-control" name="Title" id="Title" required placeholder=" "
+              [(ngModel)]="request.title">
             <label for="Title" class="labe">Title</label>
           </div>
         </div>
         <div class="row contain">
-          <textarea name="Description" class="form-control" id="Description" required [(ngModel)]="request.description"></textarea>
+          <textarea name="Description" class="form-control" id="Description" required
+            [(ngModel)]="request.description"></textarea>
           <label for="Description" class="labeldes">Description</label>
         </div>
         <div class="row justify-content-center">
@@ -45,7 +59,8 @@
         </div>
         <div class="row">
           <div class="col-md-12 contain">
-            <input type="number" class="form-control" id="required_amount" name="required_amount" placeholder="" min="1" required [(ngModel)]="request.required_amount">
+            <input type="number" class="form-control" id="required_amount" name="required_amount" placeholder="" min="1"
+              required [(ngModel)]="request.required_amount">
             <label for="required_amount" class="labe">Required Amount With $</label>
           </div>
         </div>
