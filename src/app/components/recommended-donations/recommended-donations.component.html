@@ -1,7 +1,4 @@
 <div class="container mb-5">
-  <div class="row title mt-4 text-center" data-aos="fade-down" data-aos-duration="1000" data-aos-once="true">
-    <p>These campaigns were specially selected for you</p>
-  </div>
   <!-- Spinner أثناء التحميل -->
   <div *ngIf="loading" class="d-flex justify-content-center align-items-center "
     style="height: 300px; color: #188894 ;">
@@ -10,6 +7,9 @@
     </div>
   </div>
   <div class="container" *ngIf="!loading && items.length > 0">
+    <div class="row title mt-4 text-center" data-aos="fade-down" data-aos-duration="1000" data-aos-once="true">
+      <p>These campaigns were specially selected for you</p>
+    </div>
     <div class="row mb-5">
       <div *ngFor="let item of items" class="col-sm-12 col-md-6 col-lg-4 d-flex justify-content-center"
         data-aos="fade-up" data-aos-duration="1500" data-aos-once="true">
@@ -42,11 +42,17 @@
       </div>
     </div>
     <div class="row">
-
         <app-charts></app-charts>
-      
     </div>
   </div>
+</div>
+<div class="container text-center" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true"
+  *ngIf="!loading && items.length === 0">
+  <p class="mt-5">No campaigns matching your preferences are available at the moment.They will be available soon!</p>
+  <p>You can still donate to one of our currently available campaigns.</p>
+  <a routerLink="/allcards" class="btn mb-5">Donate Now</a>
+  <img src="" alt="">
+
 </div>
 
 <!-- المودال -->
