@@ -87,6 +87,10 @@ AiRecommendation(donorId:number){
   return this.httpclient.get(`${environment.baseUrl}/api/ai/recommend/${donorId}`)
 }
 
+GetRequestsByLocation(){
+  return this.httpclient.get(`${environment.baseUrl}/api/requests/by-location`)
+}
+
 }
 
 

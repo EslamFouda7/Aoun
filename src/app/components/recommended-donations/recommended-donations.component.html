@@ -41,8 +41,11 @@
         </div>
       </div>
     </div>
+    <div class="row">
+      <app-charts></app-charts>
+    </div>
   </div>
 </div>
 
 <!-- المودال -->
-<app-donation-modal *ngIf="isModalVisible" [item]="selectedItem" (close)="closeModal()" />
+<app-donation-modal *ngIf="isModalVisible" [item]="selectedItem" (close)="closeModal()"/>

@@ -1,0 +1,11 @@
+<div class="text-center">
+  <ngx-charts-pie-chart
+  *ngIf="!loading && doughnutData.length > 0"
+  [view]="[500, 400]"
+  [scheme]="colorScheme"
+  [results]="doughnutData"
+  [labels]="true"
+  [doughnut]="true">
+</ngx-charts-pie-chart>
+</div>
+
