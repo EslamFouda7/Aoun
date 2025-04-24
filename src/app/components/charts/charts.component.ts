@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { APIService } from '../../services/api.service';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { ScaleType, Color } from '@swimlane/ngx-charts';
@@ -11,6 +11,22 @@ import { ScaleType, Color } from '@swimlane/ngx-charts';
   styleUrl: './charts.component.css',
 })
 export class ChartsComponent implements OnInit {
+
+
+  screenWidth: number = window.innerWidth;
+  view: [number, number] = [400, 400];
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.screenWidth = event.target.innerWidth;
+    this.updateView();
+  }
+  updateView() {
+    const width = this.screenWidth * 0.8; // 80% من عرض الشاشة
+    const limitedWidth = Math.min(width, 400); // حد أقصى 360
+    this.view = [limitedWidth, 320]; // العرض والارتفاع النهائي
+  }
+
+
   constructor(private _api: APIService) {}
   loading: boolean = true;
   doughnutData: any[] = []; // لتخزين البيانات الخاصة بالرسم البياني
@@ -38,5 +54,7 @@ export class ChartsComponent implements OnInit {
         console.log(err);
       },
     });
+    this.updateView();
   }
+
 }

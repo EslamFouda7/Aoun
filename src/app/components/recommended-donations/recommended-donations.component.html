@@ -10,7 +10,7 @@
     </div>
   </div>
   <div class="container" *ngIf="!loading && items.length > 0">
-    <div class="row">
+    <div class="row mb-5">
       <div *ngFor="let item of items" class="col-sm-12 col-md-6 col-lg-4 d-flex justify-content-center"
         data-aos="fade-up" data-aos-duration="1500" data-aos-once="true">
         <div class="card mt-5" style="width: 22rem;">
@@ -42,7 +42,9 @@
       </div>
     </div>
     <div class="row">
-      <app-charts></app-charts>
+
+        <app-charts></app-charts>
+      
     </div>
   </div>
 </div>
