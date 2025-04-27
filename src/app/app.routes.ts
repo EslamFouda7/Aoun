@@ -18,6 +18,7 @@ import { authGuard } from './guards/auth.guard';
 import { EditDonationRequestsComponent } from './components/edit-donation-requests/edit-donation-requests.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AllCardsComponent } from './components/all-cards/all-cards.component';
+import { YourDonationsComponent } from './components/your-donations/your-donations.component';
 
 export const routes: Routes = [
     {path:"",redirectTo:"home",pathMatch:"full"},
@@ -29,7 +30,8 @@ export const routes: Routes = [
         {path:"settings",component:ProfileSettingsComponent},
         {path:"recommended",component:RecommendedDonationsComponent},
         {path:"password",component:ChangePasswordComponent},
-        {path:"EditDonationRequests",component:EditDonationRequestsComponent}
+        {path:"EditDonationRequests",component:EditDonationRequestsComponent},
+        {path:"yourDonation",component:YourDonationsComponent}
       ]
     },
     {path:"signin",component:SigninComponent},

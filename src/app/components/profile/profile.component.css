@@ -21,15 +21,19 @@
   color: white;
 
 }
-.col-md-4 a {
+.col-md-3{
+  margin-bottom: 14px;
+}
+.col-md-3 a{
   position: relative;
   text-decoration: none;
   color: white;
   transition: color 0.5s ease-in-out;
   white-space: nowrap;
+
 }
 
-.col-md-4 a::after {
+.col-md-3 a::after {
   content: "";
   position: absolute;
   left: 0;
@@ -40,25 +44,26 @@
   transition: width 0.5s ease-in-out;
 }
 
-.col-md-4 a:hover::after,
-.col-md-4 a.active::after {
+.col-md-3 a:hover::after,
+.col-md-3 a.active::after {
   width: 100%; /* عند التنشيط أو التمرير بالماوس، يمتد الخط بالكامل */
 }
-.col-md-4 a.active {
+.col-md-3 a.active {
   color: #00e5ff;
 }
 
 @media (max-width: 576px) {
-  .profile .overlay{
-    height: 35vh;
-  }
+
   .profile img{
-    height: 35vh;
+    height: 40vh;
+  }
+  .profile .overlay{
+    height: 40vh;
   }
   .landing-contant{
     margin-top: 20px;
   }
-  .col-md-4 a{
-    font-size: 10px;
+  .col-md-3 a{
+    font-size: 14px;
   }
 }

@@ -7,21 +7,24 @@
         <h1>Welcome {{userName}}</h1>
       </div>
       <div class="row mt-5 d-flex justify-content-between">
-
-        <div class="col-md-4 col-4 text-center" *ngIf="userType === 'foundation'">
+        <div class="col-md-3 col-6 text-center" *ngIf="userType === 'foundation'">
           <a routerLink="/profile/EditDonationRequests" routerLinkActive="active">Your Donation Requests</a>
         </div>
-        <div class="col-md-4 col-4 text-center" *ngIf="userType === 'donor'" >
+        <div class="col-md-3 col-6 text-center" *ngIf="userType === 'donor'">
           <a routerLink="/profile/recommended" routerLinkActive="active">Recommended Donations</a>
         </div>
-        <div class="col-md-4 col-4 text-center">
+        <div class="col-md-3 col-6 text-center">
           <a routerLink="/profile/settings" routerLinkActive="active">Account Information</a>
         </div>
-        <div class="col-md-4 col-4 text-center">
+        <div class="col-md-3 col-6 text-center">
           <a routerLink="/profile/password" routerLinkActive="active">Change Password</a>
+        </div>
+        <div class="col-md-3 col-6 text-center" *ngIf="userType === 'donor'">
+          <a routerLink="/profile/yourDonation" routerLinkActive="active">Your Donations</a>
         </div>
       </div>
     </div>
+
   </div>
 </section>
 <section>
