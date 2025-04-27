@@ -31,7 +31,7 @@ export const routes: Routes = [
         {path:"recommended",component:RecommendedDonationsComponent},
         {path:"password",component:ChangePasswordComponent},
         {path:"EditDonationRequests",component:EditDonationRequestsComponent},
-        {path:"yourDonation",component:YourDonationsComponent}
+        {path:"yourDonation",component:YourDonationsComponent},
       ]
     },
     {path:"signin",component:SigninComponent},

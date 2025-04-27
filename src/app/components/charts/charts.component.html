@@ -1,20 +1,31 @@
-<div class="chartcontainer"  *ngIf="!loading && doughnutData.length > 0">
-  <div class="row">
-  <p class="text-center text-muted mb-4">
-    This chart displays the percentage of donation requests received from each governorate.
-  </p>
+ <!-- Spinner أثناء التحميل -->
+ <div *ngIf="loading" class="d-flex justify-content-center align-items-center "
+ style="height: 300px; color: #188894 ;">
+ <div class="spinner-border" role="status">
+   <span class="visually-hidden">Loading...</span>
+ </div>
 </div>
-<div class="row">
-  <div class="col-md-12 d-flex justify-content-center">
-    <ngx-charts-pie-chart
-        [view]="view"
-        [scheme]="colorScheme"
-        [results]="doughnutData"
-        [labels]="true"
-        [doughnut]="true">
-      </ngx-charts-pie-chart>
+
+<section class="d-flex justify-content-center">
+
+
+  <div class="chartcontainer" *ngIf="!loading && PercentageData.length > 0">
+    <div class="row">
+      <p class="text-center text-muted mb-4">
+        This chart displays the percentage of donation requests received from each governorate.
+      </p>
+    </div>
+    <div class="row">
+      <div class="col-md-6 d-flex justify-content-center">
+        <ngx-charts-pie-chart [view]="view" [scheme]="colorScheme" [results]="PercentageData" [labels]="true"
+          [doughnut]="true">
+        </ngx-charts-pie-chart>
+      </div>
+      <div class="col-md-6 d-flex justify-content-center">
+        <ngx-charts-bar-vertical [view]="view" [scheme]="colorScheme" [results]="RequestsCountData" [xAxis]="true"
+          [yAxis]="true" [showDataLabel]="true" [gradient]="true">
+        </ngx-charts-bar-vertical>
+      </div>
+    </div>
   </div>
-</div>
-</div>
-
-
+</section>
