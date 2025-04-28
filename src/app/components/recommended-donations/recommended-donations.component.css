@@ -24,6 +24,11 @@ p{
   overflow: hidden;
   border: none;
   box-shadow: 0 0 10px #188894;
+  border: 1px solid #18889483;
+  transition: .5s ease;
+}
+.card:hover{
+  box-shadow: none;
 }
 .card h5{
   font-weight: 700;
@@ -43,12 +48,7 @@ p{
   background-color:#188894;
   font-size: 10px;
 }
-swiper-slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 50px;
-}
+
 
 
 
@@ -58,11 +58,3 @@ swiper-slide {
   }
 }
 
-.Request{
-  width:170px;
-}
-h2{
-  font-weight: bold;
-  color: #555555;
-  margin: 40px 0 40px 0;
-}

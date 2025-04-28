@@ -1,3 +1,4 @@
+import { Donor } from "./Donor.model";
 import { Foundation } from "./Foundation.model";
 
 export interface DonationRequest {

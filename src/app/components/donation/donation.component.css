@@ -46,6 +46,11 @@
   overflow: hidden;
   border: none;
   box-shadow: 0 0 10px #188894;
+  border: 1px solid #18889483;
+  transition: .5s ease;
+}
+.card:hover{
+  box-shadow: none;
 }
 .card h5{
   font-weight: 700;

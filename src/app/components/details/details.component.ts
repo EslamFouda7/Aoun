@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CardDetailsService } from '../../services/card-details.service';
 import { ActivatedRoute, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '../header/header.component';

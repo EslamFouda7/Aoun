@@ -19,9 +19,9 @@ export class ChartsComponent implements OnInit {
     this.updateView();
   }
   updateView() {
-    const width = this.screenWidth * 0.8; // 80% من عرض الشاشة
-    const limitedWidth = Math.min(width, 360); // حد أقصى 360
-    this.view = [limitedWidth, 320]; // العرض والارتفاع النهائي
+    const width = this.screenWidth * 0.8;
+    const limitedWidth = Math.min(width, 360);
+    this.view = [limitedWidth, 320];
   }
 
   constructor(private _api: APIService) {}
@@ -40,7 +40,6 @@ export class ChartsComponent implements OnInit {
       next: (res: any) => {
         console.log(res);
         const data = res.data;
-        // تحويل البيانات لتناسب الرسم البياني
         this.PercentageData = data.map((item: any) => ({
           name: item.location,
           value: item.percentage,

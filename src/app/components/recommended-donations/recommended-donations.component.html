@@ -22,7 +22,7 @@
             <!-- Progress Bar -->
             <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="75" aria-valuemin="0"
               aria-valuemax="100">
-              <div class="progress-bar" [style.width.%]="item.stats.percentage_completed">
+              <div class="progress-bar" data-aos="slide-right" data-aos-duration="1500" data-aos-once="true" data-aos-delay="300" [style.width.%]="item.stats.percentage_completed">
                 {{item.stats.percentage_completed}}%
               </div>
             </div>
@@ -42,18 +42,11 @@
       </div>
     </div>
     <div class="row">
-        <app-charts></app-charts>
+      <app-charts></app-charts>
     </div>
   </div>
 </div>
-<div class="container text-center" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true"
-  *ngIf="!loading && items.length === 0">
-  <p class="mt-5">No campaigns matching your preferences are available at the moment.They will be available soon!</p>
-  <p>You can still donate to one of our currently available campaigns.</p>
-  <a routerLink="/allcards" class="btn mb-5">Donate Now</a>
-  <img src="" alt="">
 
-</div>
 
 <!--لو مفيش خدمات مرشحه-->
 <div class="container text-center" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true"
@@ -61,9 +54,7 @@
   <p class="mt-5">No campaigns matching your preferences are available at the moment.They will be available soon!</p>
   <p>You can still donate to one of our currently available campaigns.</p>
   <a routerLink="/allcards" class="btn mb-5">Donate Now</a>
-  <img src="" alt="">
-
 </div>
 
 <!-- المودال -->
-<app-donation-modal *ngIf="isModalVisible" [item]="selectedItem" (close)="closeModal()"/>
+<app-donation-modal *ngIf="isModalVisible" [item]="selectedItem" (close)="closeModal()" />

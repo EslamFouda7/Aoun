@@ -8,7 +8,6 @@ import {
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
-import { CardDetailsService } from '../../services/card-details.service';
 import { CardsComponent } from "../cards/cards.component";
 import { AlertService } from '../../services/alert.service';
 import { APIService } from '../../services/api.service';

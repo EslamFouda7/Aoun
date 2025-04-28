@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import Swal from 'sweetalert2';
-import { CardDetailsService } from './card-details.service';
+
 @Injectable({
   providedIn: 'root',
 })
 export class AlertService {
   //الاشعار ال بيظهر فوق بعد التسجيل او التغييرات
-  constructor(private _CardDetailsService: CardDetailsService) {}
+  constructor() {}
   showAlert(message: string, icon: 'success' | 'error' | 'warning' ) {
     Swal.fire({
       toast: true,

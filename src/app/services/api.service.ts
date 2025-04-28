@@ -40,10 +40,6 @@ export class APIService {
   GetRequestStats(requestId:number){
     return this.httpclient.get(`${environment.baseUrl}/api/donations/request/${requestId}/stats`)
   }
-
-
-
-
 //تسجيل المتبرعين
 DonorRegister(donorData:any):Observable<any>{
   const headers = { 'Content-Type': 'application/json' };
@@ -67,8 +63,6 @@ updatePassword(data:any){
   return this.httpclient.post(`${environment.baseUrl}/api/update-password`,data,
     {headers})
   }
-
-
 DonationRequests(data:any){
   return this.httpclient.post(`${environment.baseUrl}/api/donation-requests` ,data
   )
@@ -81,16 +75,19 @@ StoreDonations(data:any){
   return this.httpclient.post(`${environment.baseUrl}/api/donations`,data)
 }
 
-
 //AI model
 AiRecommendation(donorId:number){
   return this.httpclient.get(`${environment.baseUrl}/api/ai/recommend/${donorId}`)
 }
-
+//بيجيب الطلبات ع حسب الموقع
 GetRequestsByLocation(){
   return this.httpclient.get(`${environment.baseUrl}/api/requests/by-location`)
 }
 
+//getDonorDonations
+GetDonorDonations(donorId:number){
+  return this.httpclient.get(`${environment.baseUrl}/api/donations/donor/${donorId}`)
+}
 }
 
 

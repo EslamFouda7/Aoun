@@ -1,1 +1,64 @@
-<p>your-donations works!</p>
+<div class="container mb-5">
+  <!-- Spinner أثناء التحميل -->
+  <div *ngIf="loading" class="d-flex justify-content-center align-items-center "
+    style="height: 300px; color: #188894 ;">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+  <div class="container" *ngIf="!loading && items.length > 0">
+    <div class="row title mt-4" data-aos="fade-down" data-aos-duration="1000" data-aos-once="true">
+      <p class="text-center">Your donations make a difference.</p>
+      <p>Here you can track the impact of your giving in supporting humanitarian campaigns.</p>
+    </div>
+    <div class="row mb-5">
+      <div *ngFor="let item of items" class="col-sm-12 col-md-6 col-lg-4 d-flex justify-content-center"
+        data-aos="fade-up" data-aos-duration="1500" data-aos-once="true">
+        <div class="card mt-5" style="width: 22rem;">
+          <img [src]="imgurl + item.donation.donation_request.file_path" class="card-img-top" height="200px" alt="...">
+          <div class="card-body">
+            <a [routerLink]="['/details', item.donation.donation_request.id]">
+              <h5 class="card-title mb-3">{{ item.donation.donation_request.title}}</h5>
+            </a>
+            <p class="text-center text-success mt-2"><i class="fa-solid fa-check"></i> You have donated:
+              {{item.donation.amount}} {{item.donation.currency}}</p>
+            <!-- Progress Bar -->
+            <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="75" aria-valuemin="0"
+              aria-valuemax="100">
+              <div class="progress-bar" data-aos="slide-right" data-aos-duration="1500" data-aos-once="true"
+                data-aos-delay="300" [style.width.%]="item.status.percentage_completed">
+                {{item.status.percentage_completed}}%
+              </div>
+            </div>
+            <div class="row mb-4">
+              <div class="col-6">
+                <p>Donate:{{item.status.total_donated}}</p>
+              </div>
+              <div class="col-6">
+                <p>Remaining:{{item.status.remaining_amount}} </p>
+              </div>
+            </div>
+            <div class="d-flex justify-content-center">
+              <a class="btn btncard" (click)="openModal(item)">Donate Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row total overflow-hidden">
+      <div class="total_donations col-md-7 text-success" data-aos="slide-right" data-aos-duration="1000" data-aos-once="true">
+        <h4><i class="fa-solid fa-check"></i> Your total donations: {{ totalUserDonation | number }} {{currency}}</h4>
+      </div>
+      <div class="col-md-5 text-center"data-aos="slide-left" data-aos-duration="1000" data-aos-once="true">
+        <p>Thank you for your continued support 💙🙏.</p>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!loading && items.length == 0" class="text-center mt-5">
+    <p>You haven't made a donation yet!</p>
+    <p>Start your giving journey and spread hope.</p>
+    <a routerLink="/allcards" class="btn mb-5">Donate Now</a>
+  </div>
+</div>
+<!-- المودال -->
+<app-donation-modal *ngIf="isModalVisible" [item]="selectedItem.donation.donation_request" (close)="closeModal()" />

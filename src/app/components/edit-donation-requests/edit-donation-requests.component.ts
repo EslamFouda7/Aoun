@@ -5,7 +5,6 @@ import { CommonModule } from '@angular/common';
 import { CardsComponent } from '../cards/cards.component';
 import { DonationRequest } from '../../models/DonationRequest.model';
 import { RouterLink } from '@angular/router';
-import { CardDetailsService } from '../../services/card-details.service';
 import { AlertService } from '../../services/alert.service';
 import { environment } from '../../../environments/environment.development';
 import { DonationModalComponent } from "../donation-modal/donation-modal.component";
@@ -25,7 +24,6 @@ export class EditDonationRequestsComponent {
   constructor(
     private _api: APIService,
     private _Auth: AuthService,
-    private card_details: CardDetailsService,
     private _alert: AlertService
   ) {}
 

@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { CardDetailsService } from '../../services/card-details.service';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { HeaderComponent } from '../header/header.component';
@@ -43,7 +42,6 @@ export class CardsComponent {
     private _alert: AlertService,
     private _api: APIService,
     private route: ActivatedRoute,
-    private card_details: CardDetailsService
   ) {}
 
   ngOnInit(): void {
