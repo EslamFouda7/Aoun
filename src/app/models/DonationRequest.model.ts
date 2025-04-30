@@ -10,6 +10,7 @@ export interface DonationRequest {
   title:string;
   description:string;
   file_path:string;
+  match_percentage:number
   stats: {
     total_donated: number;
     remaining_amount: number;
