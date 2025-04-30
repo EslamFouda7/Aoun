@@ -1,7 +1,7 @@
 <app-header></app-header>
 <app-loading-spinner *ngIf="loading"></app-loading-spinner>
 <section *ngIf="item && !loading">
-  <div class="container">
+  <div class="container overflow-hidden">
       <div class="row border rounded p-3 text-center">
         <div class="col-6" data-aos="slide-right" data-aos-duration="1000" data-aos-once="true">
           <h6><i class="fa-solid fa-address-card"></i> {{item.foundation.foundation_name}}</h6>
