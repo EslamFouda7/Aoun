@@ -1,4 +1,4 @@
 export const environment ={
-  baseUrl:'http://127.0.0.1:8000',
-  imgurl:'http://127.0.0.1:8000/storage/'
+  baseUrl:'https://aoun-backend-production-100f.up.railway.app',
+  imgurl:'https://aoun-backend-production-100f.up.railway.app/storage/'
 }

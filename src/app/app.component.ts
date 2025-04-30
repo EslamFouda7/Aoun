@@ -14,7 +14,7 @@ import { DonationModalComponent } from "./components/donation-modal/donation-mod
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterModule, LoadingSpinnerComponent, CommonModule, DonationModalComponent],
+  imports: [RouterOutlet, RouterModule, LoadingSpinnerComponent, CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

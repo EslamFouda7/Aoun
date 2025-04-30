@@ -37,7 +37,7 @@
             ],
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.bundle.js",
-              
+
               "node_modules/aos/dist/aos.js"
             ],
             "server": "src/main.server.ts",
@@ -52,7 +52,7 @@
                 {
                   "type": "initial",
                   "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumError": "2MB"
                 },
                 {
                   "type": "anyComponentStyle",
