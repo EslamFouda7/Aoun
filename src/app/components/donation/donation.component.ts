@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
-import { CardsComponent } from "../cards/cards.component";
+import { CardsComponent } from '../cards/cards.component';
 import { AlertService } from '../../services/alert.service';
 import { APIService } from '../../services/api.service';
 import { DonationRequest } from '../../models/DonationRequest.model';
@@ -24,43 +24,28 @@ import { environment } from '../../../environments/environment.development';
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class DonationComponent implements OnInit {
-
-  imgurl=environment.imgurl;
-  items: DonationRequest[]=[];
+  loading: boolean = true;
+  imgurl = environment.imgurl;
+  items: DonationRequest[] = [];
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: object,
-    private _api:APIService,
-  ) {
-
-  }
-
-
-
-
-
+    private _api: APIService
+  ) {}
 
   ngOnInit(): void {
     this._api.GetAllDonationRequests().subscribe({
       next: (res: any) => {
         console.log('res:', res);
-        this.items = res.data.slice(0, 5);;
+        this.items = res.data.slice(0, 5);
+        this.loading = false;
       },
       error: (err) => {
         console.log('Error', err);
       },
     });
 
-
-
-
-
-
-
-
-
-
-  //swiper
+    //swiper
     if (isPlatformBrowser(this.platformId)) {
       // يتم تنفيذ الكود فقط إذا كنا في المتصفح
       setTimeout(() => {
@@ -71,10 +56,4 @@ export class DonationComponent implements OnInit {
       }, 100);
     }
   }
-
-
-
-
-
-
 }

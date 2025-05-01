@@ -16,6 +16,7 @@
   background-color: #188894;
   box-shadow: none;
   color: white;
+
 }
 
 .card{
@@ -49,7 +50,10 @@
   font-size: 10px;
 }
 
-
+.card .match_percentage{
+  color: #188894;
+  font-weight: 600;
+}
 
 
 @media (max-width: 576px) {
