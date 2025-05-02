@@ -78,7 +78,7 @@ export class SignupComponent {
     private _api: APIService,
     private _alert: AlertService,
     private router: Router,
-    private spinner:NgxSpinnerService
+    private spinner: NgxSpinnerService
   ) {}
 
   switchToDonor() {
@@ -90,7 +90,6 @@ export class SignupComponent {
   }
 
   onSubmit(form: NgForm) {
-    this.spinner.show();
     if (form.invalid) {
       this._alert.showAlert('Please fill all required fields!', 'warning');
       return;
@@ -107,7 +106,7 @@ export class SignupComponent {
       this._alert.showAlert('Passwords do not match!', 'error');
       return;
     }
-
+    this.spinner.show();
     if (this.isDonor) {
       localStorage.setItem('userRole', 'donor');
       this._api.DonorRegister(this.donorData).subscribe({
