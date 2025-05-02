@@ -16,11 +16,10 @@
   background-color: #188894;
   box-shadow: none;
   color: white;
-
 }
 
 .card{
-  height: 450px;
+  height: 460px;
   border-radius: 20px;
   overflow: hidden;
   border: none;
@@ -31,7 +30,7 @@
 .card:hover{
   box-shadow: none;
 }
-.card h5{
+.card h6{
   font-weight: 700;
   color: rgb(49, 49, 49);
 }
@@ -39,7 +38,9 @@
   text-decoration: none;
 }
 .card p{
+  color: #414141b9;
   font-size: 12px;
+  font-weight: 700;
 }
 .progress{
   height: 15px;
