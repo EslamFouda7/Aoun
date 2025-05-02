@@ -5,11 +5,12 @@ import { APIService } from '../../services/api.service';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../services/auth-service.service';
 import { AlertService } from '../../services/alert.service';
+import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-donation-modal',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule,NgxSpinnerModule],
   templateUrl: './donation-modal.component.html',
   styleUrl: './donation-modal.component.css',
 })
@@ -17,7 +18,8 @@ export class DonationModalComponent {
   constructor(
     private _api: APIService,
     private _Auth: AuthService,
-    private _alert: AlertService
+    private _alert: AlertService,
+    private spinner:NgxSpinnerService
   ) {}
 
   @Input() item: any;
@@ -89,10 +91,12 @@ export class DonationModalComponent {
       currency: 'USD',
       notes: '',
     };
+    this.spinner.show()
 
     // إرسال البيانات
     this._api.StoreDonations(payload).subscribe({
       next: (res) => {
+        this.spinner.hide()
         console.log(res);
         this._alert.showAlert(
           `You have donated ${this.donationAmount}$. Thank you for your generosity! 💙🙏`,
@@ -101,6 +105,7 @@ export class DonationModalComponent {
         this.closeModal();
       },
       error: (err) => {
+        this.spinner.hide()
         console.error('Server error:', err);
         if(err.error.errors.donor_id){
           this._alert.showAlert('Donation failed! this is foundation acount', 'error');

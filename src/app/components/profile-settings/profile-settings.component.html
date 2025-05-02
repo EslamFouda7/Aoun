@@ -30,7 +30,8 @@
           <h5>Preferences:</h5>
         </div>
         <div class="row mb-4">
-          <select class="form-control" name="preferred_donation" id="PreferredDonation" required [(ngModel)]="person.preferred_donation">
+          <select class="form-control" name="preferred_donation" id="PreferredDonation" required
+            [(ngModel)]="person.preferred_donation">
             <option value="money">Money</option>
             <option value="medical equipment">Medical Equipment</option>
           </select>
@@ -38,7 +39,7 @@
         </div>
         <div class="row mb-4">
           <select class="form-control" name="location" id="Location" [(ngModel)]="person.location">
-            <option  *ngFor="let gov of egyptGovernorates" [value]="gov">{{gov}}</option>
+            <option *ngFor="let gov of egyptGovernorates" [value]="gov">{{gov}}</option>
           </select>
           <label for="Location">Location</label>
         </div>
@@ -53,7 +54,8 @@
           <h5>Foundation Information:</h5>
         </div>
         <div class="row mb-4">
-          <input class="form-control" type="text" id="foundationName" name="foundation_name" [(ngModel)]="foundation.foundation_name">
+          <input class="form-control" type="text" id="foundationName" name="foundation_name"
+            [(ngModel)]="foundation.foundation_name">
           <label for="foundationName">Foundation Name</label>
         </div>
         <div class="row mb-4">
@@ -73,7 +75,8 @@
           <h5>Donation Details:</h5>
         </div>
         <div class="row mb-4">
-          <select class="form-control" name="required_donation" id="RequiredDonation" required [(ngModel)]="foundation.required_donation">
+          <select class="form-control" name="required_donation" id="RequiredDonation" required
+            [(ngModel)]="foundation.required_donation">
             <option value="money">Money</option>
             <option value="medical equipment">Medical Equipment</option>
           </select>
@@ -81,13 +84,15 @@
         </div>
         <div class="row mb-4">
           <select class="form-control" name="location" id="Location" [(ngModel)]="foundation.location">
-            <option  *ngFor="let gov of egyptGovernorates" [value]="gov">{{gov}}</option>
+            <option *ngFor="let gov of egyptGovernorates" [value]="gov">{{gov}}</option>
           </select>
           <label for="Location">Location</label>
         </div>
         <div class="row d-flex justify-content-end">
+
           <button type="submit" class="btn save text-white" (click)="savechange()">Save Changes</button>
         </div>
+
       </form>
     </div>
     <button (click)="logout()" class="btn btn-danger mt-5">Logout</button>
@@ -95,3 +100,12 @@
 
 
 </section>
+
+<ngx-spinner
+bdColor="rgba(0, 0, 0, 0.8)"
+size="large"
+color="#188894"
+type="square-jelly-box"
+[fullScreen]="true">
+<p style="color: white" class="mt-5"> Loading... </p>
+</ngx-spinner>

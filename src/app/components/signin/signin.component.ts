@@ -7,11 +7,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AlertService } from '../../services/alert.service';
 import { AuthService } from '../../services/auth-service.service';
+import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-signin',
   standalone: true,
-  imports: [RouterLink, FooterComponent, FormsModule],
+  imports: [RouterLink, FooterComponent, FormsModule,NgxSpinnerModule],
   templateUrl: './signin.component.html',
   styleUrl: './signin.component.css',
 })
@@ -20,20 +21,24 @@ export class SigninComponent {
   constructor(
     private router: Router,
     private _Auth:AuthService,
-    private _alert: AlertService
+    private _alert: AlertService,
+    private spinner:NgxSpinnerService
   ) {}
 
   email: string = '';
   password: string = '';
 
   login(){
+    this.spinner.show();
     this._Auth.login(this.email,this.password).subscribe({
       next:(res)=>{
+        this.spinner.hide();
         this._alert.showAlert(' Signin successful!','success')
         console.log('Signin successful!' ,res)
         this.router.navigate(['/profile']);
       },
       error:(err)=>{
+        this.spinner.hide();
         if(err.status===422 && err.error.errors.password)
           {
             this._alert.showAlert(`${err.error.errors.password}`,'error')

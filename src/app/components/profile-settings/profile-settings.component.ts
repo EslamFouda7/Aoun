@@ -7,13 +7,15 @@ import { Donor } from '../../models/Donor.model';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth-service.service';
+import {NgxSpinnerService , NgxSpinnerModule} from 'ngx-spinner'
 
 @Component({
   selector: 'app-profile-settings',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule , NgxSpinnerModule],
   templateUrl: './profile-settings.component.html',
   styleUrl: './profile-settings.component.css',
+
 })
 export class ProfileSettingsComponent implements OnInit {
 
@@ -78,7 +80,8 @@ egyptGovernorates: string[] = [
     private _alert: AlertService,
     private _api: APIService,
     private _Auth: AuthService,
-    private router: Router
+    private router: Router,
+    private _spinner: NgxSpinnerService
   ) {}
 
   ngOnInit(): void {
@@ -121,6 +124,7 @@ egyptGovernorates: string[] = [
 
   //حفظ التعديل
   savechange() {
+    this._spinner.show();
     let payload: any;
 
     if (this.userType === 'foundation') {
@@ -148,10 +152,12 @@ egyptGovernorates: string[] = [
 
     this._api.updateProfile(payload).subscribe({
       next: (response) => {
+        this._spinner.hide();
         console.log('Profile updated successfully', response);
         this._alert.showAlert('Profile updated successfully!', 'success');
       },
       error: (err) => {
+        this._spinner.hide();
         console.error('خطأ أثناء تحديث الملف الشخصي:', err);
         if(err.status === 422 && err.error.errors.email){
           this._alert.showAlert(`${ err.error.errors.email}`, 'error');

@@ -17,4 +17,5 @@ bootstrapApplication(AppComponent, {
       withInMemoryScrolling({ scrollPositionRestoration: 'top' }) // ✅ التمرير لأعلى عند تغيير الصفحة
     )
   ]
+  
 }).catch((err) => console.error(err));

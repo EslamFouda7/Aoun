@@ -9,6 +9,7 @@ import { AuthService } from '../../services/auth-service.service';
 import { Foundation } from '../../models/Foundation.model';
 import { LoadingSpinnerComponent } from '../loading-spinner/loading-spinner.component';
 import { CommonModule } from '@angular/common';
+import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-request-assistance',
@@ -19,6 +20,7 @@ import { CommonModule } from '@angular/common';
     FormsModule,
     LoadingSpinnerComponent,
     CommonModule,
+    NgxSpinnerModule,
   ],
   templateUrl: './request-assistance.component.html',
   styleUrl: './request-assistance.component.css',
@@ -29,12 +31,13 @@ export class RequestAssistanceComponent {
   constructor(
     private _Auth: AuthService,
     private _api: APIService,
-    private _alert: AlertService
+    private _alert: AlertService,
+    private spinner: NgxSpinnerService
   ) {}
   request: any = {
     foundation_name: '',
     location: '',
-    reqiured_donation:'',
+    reqiured_donation: '',
     title: '',
     description: '',
     required_amount: '',
@@ -69,6 +72,7 @@ export class RequestAssistanceComponent {
   }
 
   onSubmit(form: any) {
+    this.spinner.show();
     const formData = new FormData();
     formData.append('foundation_name', this.request.foundation_name);
     formData.append('location', this.request.location);
@@ -76,17 +80,19 @@ export class RequestAssistanceComponent {
     formData.append('title', this.request.title);
     formData.append('description', this.request.description);
     formData.append('required_amount', this.request.required_amount);
-    console.log(this.request.required_donation)
+    console.log(this.request.required_donation);
     if (this.request.file) {
       formData.append('file', this.request.file);
     }
     this._api.DonationRequests(formData).subscribe({
       next: (res) => {
+        this.spinner.hide();
         console.log('res', res);
         this._alert.showAlert('Request Assistance Successfly!', 'success');
         this.request = '';
       },
       error: (err) => {
+        this.spinner.hide();
         console.log('err', err);
         if (err.status === 422) {
           if (err.error.errors.required_amount) {
@@ -106,9 +112,11 @@ export class RequestAssistanceComponent {
             this._alert.showAlert(`${err.error.errors.title}`, 'warning');
           }
           if (err.error.errors.reqiured_donation) {
-            this._alert.showAlert(`${err.error.errors.reqiured_donation}`, 'warning');
+            this._alert.showAlert(
+              `${err.error.errors.reqiured_donation}`,
+              'warning'
+            );
           }
-
         }
       },
     });
