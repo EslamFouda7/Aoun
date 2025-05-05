@@ -3,46 +3,56 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { APIService } from '../../services/api.service';
 import { ActivatedRoute } from '@angular/router';
+import { AlertService } from '../../services/alert.service';
 
 @Component({
   selector: 'app-reset-password',
   standalone: true,
-  imports: [FormsModule,CommonModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './reset-password.component.html',
-  styleUrl: './reset-password.component.css'
+  styleUrl: './reset-password.component.css',
 })
-export class ResetPasswordComponent implements OnInit{
-
-    email:string='';
-    token:string='';
-    password:string='';
-    confirm_password:string='';
-    success='';
-    error='';
-    constructor(private _api:APIService,
-      private route:ActivatedRoute
-    ){}
-    ngOnInit(): void {
-      // استخراج التوكن والإيميل من الرابط
-      this.token = this.route.snapshot.queryParamMap.get('token') || '';
-      this.email = this.route.snapshot.queryParamMap.get('email') || '';
-    }
-    onSubmit(){
-      const data ={
-        email:this.email,
-        token:this.token,
-        password:this.password,
-        password_confirmation:this.confirm_password
-      };
-      this._api.ResetPassword(data).subscribe({
-        next:(res)=>{
-          console.log(res);
-        },
-        error:(err)=>{
-          console.log(err);
+export class ResetPasswordComponent implements OnInit {
+  email: string = '';
+  token: string = '';
+  password: string = '';
+  confirm_password: string = '';
+  success = '';
+  error = '';
+  constructor(
+    private _api: APIService,
+    private route: ActivatedRoute,
+    private _alert: AlertService
+  ) {}
+  ngOnInit(): void {
+    // استخراج التوكن والإيميل من الرابط
+    this.token = this.route.snapshot.queryParamMap.get('token') || '';
+    this.email = this.route.snapshot.queryParamMap.get('email') || '';
+  }
+  onSubmit() {
+    const data = {
+      email: this.email,
+      token: this.token,
+      password: this.password,
+      password_confirmation: this.confirm_password,
+    };
+    this._api.ResetPassword(data).subscribe({
+      next: (res: any) => {
+        console.log(res);
+        this._alert.showAlert("Password has been reset successfully",'success')
+        this.success = res.error.message;
+        this.error = '';
+      },
+      error: (err) => {
+        this._alert.showAlert(`${err.error.message}`, 'error');
+        this.error=`${err.error.message}`
+        console.log(err);
+        if (err.status === 400 && err.error.message ==="Invalid token") {
+          this._alert.showAlert("link has expired" , 'error')
+          this.error = "link has expired";
         }
-      })
-    }
-
-
+        this.success='';
+      },
+    });
+  }
 }
