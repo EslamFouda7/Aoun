@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { APIService } from '../../services/api.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AlertService } from '../../services/alert.service';
 
 @Component({
@@ -22,7 +22,8 @@ export class ResetPasswordComponent implements OnInit {
   constructor(
     private _api: APIService,
     private route: ActivatedRoute,
-    private _alert: AlertService
+    private _alert: AlertService,
+    private router:Router
   ) {}
   ngOnInit(): void {
     // استخراج التوكن والإيميل من الرابط
@@ -42,6 +43,7 @@ export class ResetPasswordComponent implements OnInit {
         this._alert.showAlert("Password has been reset successfully",'success')
         this.success = res.error.message;
         this.error = '';
+        this.router.navigate(['/signin']);
       },
       error: (err) => {
         this._alert.showAlert(`${err.error.message}`, 'error');
