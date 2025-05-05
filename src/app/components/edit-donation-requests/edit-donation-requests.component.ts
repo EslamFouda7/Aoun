@@ -9,6 +9,7 @@ import { AlertService } from '../../services/alert.service';
 import { environment } from '../../../environments/environment.development';
 import { DonationModalComponent } from "../donation-modal/donation-modal.component";
 
+
 @Component({
   selector: 'app-edit-donation-requests',
   standalone: true,
@@ -24,11 +25,9 @@ export class EditDonationRequestsComponent {
   constructor(
     private _api: APIService,
     private _Auth: AuthService,
-    private _alert: AlertService
   ) {}
 
   ngOnInit(): void {
-
     this.userId = this._Auth.getUserId();
     if (this.userId) {
       this._api.GetRequestsByFoundationId(this.userId).subscribe({

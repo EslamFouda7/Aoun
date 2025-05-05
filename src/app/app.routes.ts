@@ -19,6 +19,8 @@ import { EditDonationRequestsComponent } from './components/edit-donation-reques
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AllCardsComponent } from './components/all-cards/all-cards.component';
 import { YourDonationsComponent } from './components/your-donations/your-donations.component';
+import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 
 export const routes: Routes = [
     {path:"",redirectTo:"home",pathMatch:"full"},
@@ -35,6 +37,8 @@ export const routes: Routes = [
       ]
     },
     {path:"signin",component:SigninComponent},
+    {path:"forgot-password",component:ForgetPasswordComponent},
+    {path:"reset-password",component:ResetPasswordComponent},
     {path:"signup",component:SignupComponent},
     {path:"RequestAssistance",component:RequestAssistanceComponent,canActivate:[authGuard]},
     {path:"details/:id",component:DetailsComponent},

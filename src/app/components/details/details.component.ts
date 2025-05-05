@@ -11,6 +11,7 @@ import { AuthService } from '../../services/auth-service.service';
 import { FormsModule, NgForm } from '@angular/forms';
 import { environment } from '../../../environments/environment.development';
 import { DonationModalComponent } from "../donation-modal/donation-modal.component";
+import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-details',
@@ -21,7 +22,8 @@ import { DonationModalComponent } from "../donation-modal/donation-modal.compone
     HeaderComponent,
     FooterComponent,
     LoadingSpinnerComponent,
-    DonationModalComponent
+    DonationModalComponent,
+    NgxSpinnerModule
 ],
   templateUrl: './details.component.html',
   styleUrl: './details.component.css',
@@ -60,7 +62,8 @@ export class DetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private _alert: AlertService,
     private _api: APIService,
-    private _Auth: AuthService
+    private _Auth: AuthService,
+    private spinner:NgxSpinnerService
   ) {}
 
 
@@ -103,10 +106,11 @@ export class DetailsComponent implements OnInit {
 
 
   Save() {
+    this.spinner.show();
     const itemId = Number(this.route.snapshot.paramMap.get('id'));
-
     this._api.UpdateDonationRequests(itemId, this.item).subscribe({
       next: (res: any) => {
+        this.spinner.hide();
         console.log(res);
         this.item?.title === res.data.title;
         this.item?.description === res.data.description;
@@ -114,6 +118,7 @@ export class DetailsComponent implements OnInit {
         this._alert.showAlert(`${res.message}`, 'success');
       },
       error: (err) => {
+        this.spinner.hide();
         console.log('Error', err);
         if (err.error.errors.required_amount) {
           this._alert.showAlert(
