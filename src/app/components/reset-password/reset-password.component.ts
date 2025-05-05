@@ -4,11 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { APIService } from '../../services/api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertService } from '../../services/alert.service';
+import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-reset-password',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule,NgxSpinnerModule],
   templateUrl: './reset-password.component.html',
   styleUrl: './reset-password.component.css',
 })
@@ -23,7 +24,8 @@ export class ResetPasswordComponent implements OnInit {
     private _api: APIService,
     private route: ActivatedRoute,
     private _alert: AlertService,
-    private router:Router
+    private router:Router,
+    private spinner:NgxSpinnerService
   ) {}
   ngOnInit(): void {
     // استخراج التوكن والإيميل من الرابط
@@ -31,6 +33,7 @@ export class ResetPasswordComponent implements OnInit {
     this.email = this.route.snapshot.queryParamMap.get('email') || '';
   }
   onSubmit() {
+    this.spinner.show();
     const data = {
       email: this.email,
       token: this.token,
@@ -44,8 +47,10 @@ export class ResetPasswordComponent implements OnInit {
         this.success = "Password has been reset successfully";
         this.error = '';
         this.router.navigate(['/signin']);
+        this.spinner.hide();
       },
       error: (err) => {
+        this.spinner.hide();
         this._alert.showAlert(`${err.error.message}`, 'error');
         this.error=`${err.error.message}`
         console.log(err);
