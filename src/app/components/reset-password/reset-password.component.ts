@@ -12,14 +12,28 @@ import { APIService } from '../../services/api.service';
 })
 export class ResetPasswordComponent {
 
-
-    new_password:string='';
-    confirm_password:string='';
+    email:string='';
+    token:string='';
+    password:string='';
+    confirmpassword:string='';
     success='';
     error='';
     constructor(private _api:APIService){}
     onSubmit(){
-
+      const data ={
+        email:this.email,
+        token:this.token,
+        password:this.password,
+        confirmpassword:this.confirmpassword
+      };
+      this._api.ResetPassword(data).subscribe({
+        next:(res)=>{
+          console.log(res);
+        },
+        error:(err)=>{
+          console.log(err);
+        }
+      })
     }
 
 
