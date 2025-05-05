@@ -32,7 +32,7 @@ export class ResetPasswordComponent implements OnInit{
         email:this.email,
         token:this.token,
         password:this.password,
-        confirmpassword:this.confirmpassword
+        confirm_password:this.confirmpassword
       };
       this._api.ResetPassword(data).subscribe({
         next:(res)=>{
