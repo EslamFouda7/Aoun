@@ -5,6 +5,7 @@ import { Observable, retry } from 'rxjs';
 import { Donor } from '../models/Donor.model';
 import { Foundation } from '../models/Foundation.model';
 import { DonationRequest } from '../models/DonationRequest.model';
+import { ForgetPasswordComponent } from '../components/forget-password/forget-password.component';
 
 @Injectable({
   providedIn: 'root'
@@ -88,7 +89,17 @@ GetRequestsByLocation(){
 GetDonorDonations(donorId:number){
   return this.httpclient.get(`${environment.baseUrl}/api/donations/donor/${donorId}`)
 }
+
+//forgotPassword
+ForgetPassword(data:any){
+  return this.httpclient.post(`${environment.baseUrl}/api/forgot-password`,data)
 }
+//reset-password
+ResetPassword(data:any){
+  return this.httpclient.post(`${environment.baseUrl}/api/reset-password`,data)
+}
+}
+
 
 
 
