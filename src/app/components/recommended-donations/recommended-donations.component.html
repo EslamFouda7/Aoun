@@ -8,7 +8,7 @@
   </div>
   <div class="container" *ngIf="!loading && items.length > 0">
     <div class="row title mt-4 text-center" data-aos="fade-down" data-aos-duration="1000" data-aos-once="true">
-      <p>These campaigns were specially selected for you</p>
+      <p>These campaigns were specially selected for you using AI</p>
     </div>
     <div class="row mb-5">
       <div *ngFor="let item of items" class="col-sm-12 col-md-6 col-lg-4 d-flex justify-content-center"
@@ -40,7 +40,7 @@
             </div>
             <div class="row mt-4">
               <div class="col-md-12 d-flex justify-content-end">
-                <p class="match_percentage">Match Percentage {{item.match_percentage}}%</p>
+                <p class="match_percentage">similarity Percentage {{item.match_percentage}}%</p>
               </div>
 
             </div>
@@ -52,7 +52,7 @@
     <!--charts-->
     <div class="chartcontainer mb-5 overflow-hidden">
       <div class="row">
-        <p class="text-center text-muted">This chart visualizes how closely each campaign matches your preferences</p>
+        <p class="text-center text-muted">This chart shows the similarity between each campaign and your preferences</p>
       </div>
       <div class="row d-flex justify-content-center">
         <div class="col-md-12 d-flex justify-content-center">
