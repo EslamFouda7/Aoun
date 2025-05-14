@@ -58,7 +58,7 @@
 
 
 @media (max-width: 576px) {
-  p{
+  .title p{
     font-size: 16px;
   }
 }
